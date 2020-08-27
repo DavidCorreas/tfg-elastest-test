@@ -1,22 +1,28 @@
-version: '3'
-
+version: "3.7"
 services:
+  
   # Selenium hub
   selenium_hub:
     image: selenium/hub
+    container_name: selenium_hub
     ports:
       - 4444:4444
+    networks:
+      envoymesh:
+        aliases:
+          - selenium_hub
 
-  # Appium Docker Android  
-  appium_android_device:
+  # Appium Docker Android
+  appium:
     image: appium/appium
+    container_name: appium
     depends_on:
       - selenium_hub
+      - emulator
     privileged: true
     ports:
       - 4723:4723
     volumes:
-      # - /dev/bus/usb:/dev/bus/usb
       - ~/.android:/root/.android
       - ${PATH_DIR_APK}:/opt
     environment:
@@ -26,3 +32,7 @@ services:
       - CHROMEDRIVER_AUTODOWNLOAD=true
       - CONNECT_TO_GRID=true
       - SELENIUM_HOST=selenium_hub
+    networks:
+      envoymesh:
+        aliases:
+          - appium
