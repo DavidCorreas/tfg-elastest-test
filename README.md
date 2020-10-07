@@ -1,5 +1,5 @@
 # TFG-ELASTEST-TEST
-Tests end-to-end realizados con RobotFramework, un framework de testing hecho en Python.
+Dependencias para el despliegue y tests end-to-end realizados con RobotFramework, un framework de testing hecho en Python.
 
 ## Objetivos
 Este repositorio tiene el objetivo de extraer archivos ajenos a las pruebas con RobotFramework
