@@ -8,9 +8,8 @@ services:
     ports:
       - 4444:4444
     networks:
-      envoymesh:
-        aliases:
-          - selenium_hub
+      - emulator
+      - grid
 
   # Appium Docker Android
   appium:
@@ -18,7 +17,6 @@ services:
     container_name: appium
     depends_on:
       - selenium_hub
-      - emulator
     privileged: true
     ports:
       - 4723:4723
@@ -28,11 +26,18 @@ services:
     environment:
       - REMOTE_ADB=true
       - ANDROID_DEVICES=${DEVICE_HOST}:${DEVICE_PORT}
+      - APPIUM_HOST=appium
       - REMOTE_ADB_POLLING_SEC=60
       - CHROMEDRIVER_AUTODOWNLOAD=true
       - CONNECT_TO_GRID=true
       - SELENIUM_HOST=selenium_hub
     networks:
-      envoymesh:
-        aliases:
-          - appium
+      - emulator
+      - grid
+
+networks: 
+  grid: {}
+
+  emulator:
+    external:
+        name: tfg-elastest_envoymesh
