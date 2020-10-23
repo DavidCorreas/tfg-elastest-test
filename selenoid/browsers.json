@@ -1,0 +1,15 @@
+{
+  "chrome": {
+    
+    "default": "85.0",
+
+    "versions": {            
+
+      "85.0": {
+        "image": "tfgelastest/chrome-vnc:85.0",
+        "port": "4444",
+        "path": "/"
+      }
+    }
+  }
+}
