@@ -36,7 +36,8 @@ services:
       - grid
 
 networks: 
-  grid: {}
+  grid: 
+    name: tfg-elastest_grid
 
   emulator:
     external:
