@@ -1,3 +1,4 @@
 [submodule "tfg-elastest-test-robotframework"]
 	path = tfg-elastest-test-robotframework
 	url = https://github.com/DavidCorreas/tfg-elastest-test-robotframework.git
+	branch = no-emulator
