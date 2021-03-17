@@ -11,8 +11,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
     networks:
       - selenoid
-      - sut
-    command: ["-container-network", "tfg-elastest_sut", "-timeout", "3m0s"]
+    command: ["-timeout", "3m0s"]
 
   selenoid-ui:
     container_name: selenoid_ui
@@ -22,12 +21,7 @@ services:
     command: ["--selenoid-uri", "http://selenoid:4444"]
     networks:
       - selenoid
-      - sut
 
 networks: 
   selenoid:
     name: tfg-elastest_selenoid
-
-  sut:
-    external:
-      name: tfg-elastest_sut
